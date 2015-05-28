@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>JobsBoard</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+!!!
+%html
+%head
+%title  Ruby on Rails Jobs
+  = stylesheet_link_tag    'application', media 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = csrf_meta_tags
 
-<%= yield %>
-
-</body>
-</html>
+%body
+	- Category.all.each do |category|
+	  = link_to category.name, jobs_path(category: category.name)
+	= yield
